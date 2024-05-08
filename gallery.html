@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Image Gallery</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iCT9pYPvCp70LMb/81HnMLeLiMN9EYbIk7iDFo0lYjLiqkcyP++qYpf+W" crossorigin="anonymous">
+  <style>
+    /* Add some basic styles for the gallery */
+    .img-fluid {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="#imageModal" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <img src="image1.jpg" class="img-fluid rounded" alt="Image description 1">
+        </a>
+      </div>
+      <div class="col-lg-4 col-md-6 mb-4">
+        <a href="#imageModal" data-bs-toggle="modal" data-bs-target="#imageModal">
+          <img src="image2.jpg" class="img-fluid rounded" alt="Image description 2">
+        </a>
+      </div>
+      </div>
+  </div>
+
+  <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="imageModalLabel">Image Title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <img src="" id="modalImage" class="img-fluid" alt="Image description">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const imageModal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+
+    imageModal.addEventListener('show.bs.modal', function (event) {
+      const button = event.relatedTarget; // Button that triggered the modal
+      const imageSrc = button.parentElement.querySelector('img').src;
+      modalImage.src = imageSrc;
+    });
+  </script>
+</body>
+</html>
